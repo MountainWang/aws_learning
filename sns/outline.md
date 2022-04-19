@@ -30,7 +30,7 @@
     - 使用http endpoint
         - [准备http server](aws_sns_listener.py)
         - http endpoit的确认
-- 发布消息
+- 发布通知
     - 查看http server收到的请求
 - 删除topic和subscription
 
@@ -40,5 +40,5 @@
 运行前需要修改代码中的topic_name和subscribe_url的值
 - 创建topic
 - 创建subscription
-- 发布消息
+- 发布通知
 - 删除topic和subscription
