@@ -20,9 +20,7 @@ ec2 示例会有一个root ebs卷，相当于电脑的系统盘
 - 在ec2上解除挂载ebs
     - sudo umount /mnt/ebs-volume
 
-## [boto3实操](ebs_example.ipynb)
-[代码来自于aws官方sdk实例](https://github.com/awsdocs/aws-doc-sdk-examples)
-
+## [boto3实操](ebs/ebs_example.ipynb)
 运行前需要修改代码中的instance_id和az的值
 - 创建一个EBS卷
 - 附加EBS卷到EC2实例
@@ -31,8 +29,7 @@ ec2 示例会有一个root ebs卷，相当于电脑的系统盘
 - 删除EBS卷
 - 删除topic和subscription
 
-## [aws cli实操](ebs_example.sh)
-[代码来自于aws官方sdk实例](https://github.com/awsdocs/aws-doc-sdk-examples)
+## [aws cli实操](ebs/ebs_example.sh)
 
 运行前需要修改代码中的instance_id和az的值
 - 创建一个EBS卷
