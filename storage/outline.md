@@ -41,6 +41,7 @@ ebs是aws上最基础的存储服务，每一台ec2 instance都离不开一个eb
 ## EFS Elastic File System
 - [official doc](https://docs.aws.amazon.com/zh_cn/efs/)
 - [ebs console (us-west-1)](https://us-west-1.console.aws.amazon.com/efs/home?region=us-west-1#)
+
 EFS和EBS不同，它在EBS的基础之上为我们提供了一个通过网络访问的文件系统，从aws的文档我们可以确认，EFS采用了nfs协议。与EBS不同，EFS封装了块设备的底层细节。我们创建好相应的资源之后直接挂载就可以使用，不需要像EBS一样进行分区，格式化等操作。而且EFS可以同时挂载在多个ec2实例，
 可以方便实例之间共享数据。
 
@@ -65,6 +66,7 @@ EFS既然是通过网络挂载，那么我们就要为他进行相应的网络�
 ## S3 Simple Storage Service
 - [official doc](https://docs.aws.amazon.com/zh_cn/s3/)
 - [s3 console (global)](https://s3.console.aws.amazon.com/s3/home?region=us-west-1#)
+
 S3是一种对象存储服务，它相比EBS和EFS进行了进一步的封装。使用EBS，我们通过ec2 instance访问一个块设备；使用EFS，我们通过ec2 instance访问一个文件系统；使用S3，我们访问的是文件对象。
 
 S3中的基本存储单元是存储桶（bucket），组织资源的基本概念是对象。存储桶的名字在整个aws中是唯一的，我们通过在桶中存放对象来组织我们的资源。每一个对象拥有一个key，我们可以通过它所在的bucket和它的key来进行定位。
