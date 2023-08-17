@@ -49,6 +49,7 @@ EFS既然是通过网络挂载，那么我们就要为他进行相应的网络�
 除了挂载目标，我们还可以给EFS创建接入点。创建接入点，可以认为是在efs的根目录下创建了多个子目录，通过挂载特定的接入点，我们将efs的子目录挂载到efs上。接入点上可以通过指定uid和gid的方式对目录进行权限管理。通过接入点挂载以后，目录下的所有文件的owner和group体现为我们在接入点上配置的用户。
 
 如果要对efs进行更精细的权限控制，除了通过安全组，子网等方式控制接入权限，还可以利用File System Policy。通过编写File System Policy，我们可以控制允许接入EFS的读写权限，比如挂载后只读或者刻写；允许或拒绝某个IAM Role通过某个接入点挂载EFS等。
+
 ## [boto3实操](efs/efs_example.ipynb)
 - 创建一个文件系统
 - 创建挂载目标
@@ -62,9 +63,25 @@ EFS既然是通过网络挂载，那么我们就要为他进行相应的网络�
 - 删除EFS
 
 ## S3 Simple Storage Service
+- [official doc](https://docs.aws.amazon.com/zh_cn/s3/)
+- [s3 console (global)](https://s3.console.aws.amazon.com/s3/home?region=us-west-1#)
+S3是一种对象存储服务，它相比EBS和EFS进行了进一步的封装。使用EBS，我们通过ec2 instance访问一个块设备；使用EFS，我们通过ec2 instance访问一个文件系统；使用S3，我们访问的是文件对象。
 
+S3中的基本存储单元是存储桶（bucket），组织资源的基本概念是对象。存储桶的名字在整个aws中是唯一的，我们通过在桶中存放对象来组织我们的资源。每一个对象拥有一个key，我们可以通过它所在的bucket和它的key来进行定位。
 
+使用EBS时，我们可以对卷进行快照；使用EFS时，我们可以将它备份到S3，或者在另一个region创建一个只读的replication file system；而S3我们可以对bucket开启版本控制，为其中的每一个对象开启自己独立的版本控制。每次对对象的修改都会生成一个新的版本，可以随时恢复。
 
-    权限控制
-    底层原理
-    应用举例
+## [boto3实操](efs/efs_example.ipynb)
+- 创建一个bucket
+- 上传文件
+- 下载文件
+- 查看文件列表
+- 删除文件
+- 删除bucket
+
+## [aws cli实操](efs/efs_example.sh)
+- 创建一个bucket
+- 上传文件
+- 下载文件
+- 删除文件
+- 删除bucket
