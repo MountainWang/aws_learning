@@ -5,7 +5,7 @@ aws efs create-mount-target --file-system-id fs-0317362afe0e953d0 --subnet-id su
 # 创建挂载目录
 sudo mkdir /mnt/efs
 # 挂载
-sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-0317362afe0e953d0.efs.us-west-1.amazonaws.com:/ /mnt/efs
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-0abe46534aee352b8.efs.us-west-1.amazonaws.com:/ /mnt/efs
 # 解除挂载
 sudo umount /mnt/efs
 # 如果解除挂载时提醒device is busy，可以利用lsof命令查看正在访问目录的进程
