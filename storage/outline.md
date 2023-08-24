@@ -1,5 +1,5 @@
 # aws上的三种存储，从底层到上层
-## 简单介绍三种存储
+
 ## EBS Elastic Block Store
 - [official doc](https://docs.aws.amazon.com/zh_cn/ebs/)
 - [ebs console (us-west-1)](https://us-west-1.console.aws.amazon.com/ec2/home?region=us-west-1#Volumes:)
