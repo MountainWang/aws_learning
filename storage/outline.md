@@ -4,7 +4,7 @@
 - [official doc](https://docs.aws.amazon.com/zh_cn/ebs/)
 - [ebs console (us-west-1)](https://us-west-1.console.aws.amazon.com/ec2/home?region=us-west-1#Volumes:)
 
-ebs是aws上最基础的存储服务，每一台ec2 instance都离不开一个ebs卷作为它的系统盘，称为根卷（root volume）。EBS卷在附加到ec2实例上之后体现为系统中的一个块设备，我们可以把它当作一块硬盘来对待，需要对他进行分区，格式化，挂载等操作。当然它实际上肯定不是一块物理硬盘。ebs可以进行快照操作，保存某个时间点的所有文件状态，在必要时可以进行恢复。一个ebs卷在同一时刻只能挂载在一个ec2实例上。
+ebs是aws上最基础的存储服务，每一台ec2 instance都离不开一个ebs卷作为它的系统盘，称为根卷（root volume）。EBS卷在附加到ec2实例上之后体现为系统中的一个块设备，我们可以把它当作一块硬盘来对待，需要对他进行分区，格式化，挂载等操作。当然它实际上肯定不是一块物理硬盘。ebs可以进行快照操作，保存某个时间点的所有文件状态，在必要时可以进行恢复。通常情况下一个ebs卷在同一时刻只能挂载在一个ec2实例上，但是有特定类型的ebs在特定区域的特定类型ec2上支持多重挂载，即同一个ebs卷同时挂载在多个ec2实例。详情可以参考[aws文档](https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/ebs-volumes-multi.html)
 
 我们可以对ebs进行扩容，在扩容以后需要在系统中对块设备进行分区操作，比如扩展当前分区或者新建分区，才可以使用到新增的容量。
 
