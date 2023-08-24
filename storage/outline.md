@@ -4,7 +4,9 @@
 - [official doc](https://docs.aws.amazon.com/zh_cn/ebs/)
 - [ebs console (us-west-1)](https://us-west-1.console.aws.amazon.com/ec2/home?region=us-west-1#Volumes:)
 
-ebs是aws上最基础的存储服务，每一台ec2 instance都离不开一个ebs卷作为它的系统盘，称为根卷（root volume）。EBS卷在附加到ec2实例上之后体现为系统中的一个块设备，我们可以把它当作一块硬盘来对待，需要对他进行分区，格式化，挂载等操作。当然它实际上肯定不是一块物理硬盘。ebs可以进行快照操作，保存某个时间点的所有文件状态，在必要时可以进行恢复。通常情况下一个ebs卷在同一时刻只能挂载在一个ec2实例上，但是有特定类型的ebs在特定区域的特定类型ec2上支持多重挂载，即同一个ebs卷同时挂载在多个ec2实例。详情可以参考[aws文档](https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/ebs-volumes-multi.html)
+ebs是aws上最基础的存储服务，每一台ec2 instance都离不开一个ebs卷作为它的系统盘，称为根卷（root volume）。一般情况下根卷的生命周期是跟随ec2实例的，当我们terminate一个ec2实例的时候，它的根卷也会同时被销毁。为了持久保存数据，我们可以给ec2实例附加额外的EBS卷。
+
+EBS卷在附加到ec2实例上之后体现为系统中的一个块设备，我们可以把它当作一块硬盘来对待，需要对他进行分区，格式化，挂载等操作。当然它实际上肯定不是一块物理硬盘。ebs可以进行快照操作，保存某个时间点的所有文件状态，在必要时可以进行恢复。通常情况下一个ebs卷在同一时刻只能挂载在一个ec2实例上，但是有特定类型的ebs在特定区域的特定类型ec2上支持多重挂载，即同一个ebs卷同时挂载在多个ec2实例。详情可以参考[aws文档](https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/ebs-volumes-multi.html)
 
 我们可以对ebs进行扩容，在扩容以后需要在系统中对块设备进行分区操作，比如扩展当前分区或者新建分区，才可以使用到新增的容量。
 
@@ -68,6 +70,8 @@ EFS既然是通过网络挂载，那么我们就要为他进行相应的网络�
 - [s3 console (global)](https://s3.console.aws.amazon.com/s3/home?region=us-west-1#)
 
 S3是一种对象存储服务，它相比EBS和EFS进行了进一步的封装。使用EBS，我们通过ec2 instance访问一个块设备；使用EFS，我们通过ec2 instance访问一个文件系统；使用S3，我们访问的是文件对象。
+
+经过一定的配置，s3中的文件可以直接通过互联网访问，我们甚至可以利用s3托管一个静态网站。详情可以参考[aws文档](https://docs.aws.amazon.com/zh_cn/AmazonS3/latest/userguide/WebsiteHosting.html)
 
 S3中的基本存储单元是存储桶（bucket），组织资源的基本概念是对象。存储桶的名字在整个aws中是唯一的，我们通过在桶中存放对象来组织我们的资源。每一个对象拥有一个key，我们可以通过它所在的bucket和它的key来进行定位。
 
